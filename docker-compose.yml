@@ -1,0 +1,58 @@
+services:
+
+  # ==========================================
+  # API 1 - Laravel (ATIVA)
+  # ==========================================
+  laravel1:
+    build: ./api_php
+    container_name: laravel1
+    working_dir: /var/www/html/laravel
+    volumes:
+      - ./api_php:/var/www/html
+    expose:
+      - "9000"
+    depends_on:
+      - postgres
+
+  # ==========================================
+  # API 2 (comentada)
+  # ==========================================
+  # api2:
+  #   build: ./api2
+  #   container_name: api2
+  #   ports:
+  #     - "3000:3000"
+
+  # ==========================================
+  # API 3 (comentada)
+  # ==========================================
+  # api3:
+  #   build: ./api3
+  #   container_name: api3
+  #   ports:
+  #     - "5000:5000"
+
+  # ==========================================
+  # GATEWAY
+  # ==========================================
+  gateway:
+    build: ./gateway
+    container_name: gateway
+    ports:
+      - "8080:80"
+    depends_on:
+      - laravel1
+      # - api2
+      # - api3
+
+  # ==========================================
+  # POSTGRES
+  # ==========================================
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: senha
+      POSTGRES_DB: laravel
