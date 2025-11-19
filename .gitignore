@@ -1,0 +1,25 @@
+# Arquivos de Sistema e IDEs (Opcional, mas recomendado)
+.DS_Store
+.idea/
+.vscode/
+Thumbs.db
+
+# Dependências (Vendor)
+vendor/
+node_modules/
+
+# Configurações e Variáveis de Ambiente
+.env
+
+# Diretórios de Cache, Logs e Storage do Lumen/Laravel
+bootstrap/cache/*.php
+storage/*.log
+storage/logs/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/views/
+
+# Dados de Containers (Volumes)
+# Assume que seus dados de DB estão em "volumes/" ou "db_data/"
+volumes/
+db_data/

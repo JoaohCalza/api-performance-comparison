@@ -11,18 +11,22 @@ RUN apt-get update && apt-get install -y \
 # Instala composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copia tudo da pasta api_php
+# Copia tudo para dentro do container
 COPY . /var/www/html
 
-# SETA o diretório *dentro da pasta LARAVEL*
-WORKDIR /var/www/html/laravel
+# A pasta correta do Lumen
+WORKDIR /var/www/html/lumen
 
-# Instala as dependências do Laravel
-RUN composer install
+# Instala dependências
+RUN composer install --no-dev --optimize-autoloader
 
-# Ajusta permissões
-RUN chown -R www-data:www-data storage bootstrap/cache
+# Garante que existam os diretórios necessários
+RUN mkdir -p bootstrap/cache
+
+# Permissões
+RUN chown -R www-data:www-data storage bootstrap/cache vendor
+
+RUN chmod -R 775 storage bootstrap/cache
 
 EXPOSE 9000
-
 CMD ["php-fpm"]
