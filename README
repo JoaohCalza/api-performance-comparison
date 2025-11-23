@@ -1,0 +1,69 @@
+API Lumen (PHP) – padrão do gateway
+API Python (FastAPI)
+API C# (.NET WebAPI)
+
+Cada API possui CRUD completo e utiliza PostgreSQL.
+Todo o ambiente é executado via Docker Compose.
+
+Subir todos os serviços:
+
+docker compose up --build
+
+A API padrão do gateway é a Lumen, acessada diretamente por:
+
+http://localhost:8080/users
+
+Para acessar as outras APIs, basta colocar o prefixo antes de /users:
+
+API Python (FastAPI):
+
+http://localhost:8080/api_python/users
+
+API C# (.NET):
+
+http://localhost:8080/api_csharp/users
+
+Operações Disponíveis (CRUD)
+
+POST /users
+
+GET /users
+
+GET /users/{id}
+
+PUT /users/{id}
+
+DELETE /users/{id}
+
+Exemplo: PUT /api_python/users/5
+
+Exemplos de Requisições (curl)
+
+Os exemplos abaixo utilizam a API padrão (Lumen).
+Para testar nas outras APIs, basta adicionar o prefixo.
+
+Criar Usuário (POST)
+curl -X POST http://localhost:8080/users \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "João Henrique",
+  "email": "joao@email.com",
+  "user": "joaologin",
+  "password": "123456"
+}'
+
+Listar Usuários (GET)
+curl http://localhost:8080/users
+
+Atualizar Usuário (PUT)
+curl -X PUT http://localhost:8080/users/11 \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Maria Silva Atualizada",
+  "email": "maria_atualizada@email.com",
+  "user": "marialogin",
+  "password": "654321"
+}'
+
+Deletar Usuário (DELETE)
+curl -X DELETE http://localhost:8080/users/11
