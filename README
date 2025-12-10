@@ -71,6 +71,3 @@ Para testar nas demais APIs, adicione o prefixo desejado.
 
 🗑️ Deletar Usuário (DELETE)
 • curl -X DELETE http://localhost:8080/users/1
-
-
-
