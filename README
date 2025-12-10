@@ -1,6 +1,7 @@
 🔬 Comparação de Desempenho de APIs com Gateway
 
 Este repositório contém um projeto acadêmico desenvolvido em conjunto com mais dois colegas, como trabalho de uma disciplina da graduação, cujo objetivo é comparar o desempenho de APIs REST implementadas em PHP (Lumen), Python (FastAPI) e C# (.NET WebAPI). As APIs são integradas por um gateway reverso com NGINX e executadas em ambiente Dockerizado.
+
 O projeto foi utilizado em testes de carga e estresse, permitindo a análise de métricas como tempo de resposta, throughput e taxa de erro.
 
 📄 Artigo Técnico
@@ -13,7 +14,7 @@ Este projeto é acompanhado por um artigo acadêmico que descreve:
 • Análise comparativa entre as tecnologias
 • Conclusões
 
-➡️ Artigo completo disponível na pasta docs/.
+Artigo completo disponível na pasta docs/.
 
 🚀 Tecnologias Utilizadas
 
@@ -60,21 +61,13 @@ Os exemplos abaixo utilizam a API padrão (Lumen – PHP).
 Para testar nas demais APIs, adicione o prefixo desejado.
 
 🆕 Criar Usuário (POST)
-• curl -X POST http://localhost:8080/users
-
-• -H "Content-Type: application/json"
-• -d '{ "name": "João Henrique", "email": "joao@email.com
-", "user": "joaologin", "password": "123456" }'
+• curl -X POST http://localhost:8080/users -H "Content-Type: application/json" -d '{ "name": "João Henrique", "email": "joao@email.com", "user": "joaologin", "password": "123456" }'
 
 📄 Listar Usuários (GET)
 • curl http://localhost:8080/users
 
 ✏️ Atualizar Usuário (PUT)
-• curl -X PUT http://localhost:8080/users/1
-
-• -H "Content-Type: application/json"
-• -d '{ "name": "Maria Silva Atualizada", "email": "maria_atualizada@email.com
-", "user": "marialogin", "password": "654321" }'
+• curl -X PUT http://localhost:8080/users/1 -H "Content-Type: application/json" -d '{ "name": "Maria Silva Atualizada", "email": "maria_atualizada@email.com", "user": "marialogin", "password": "654321" }'
 
 🗑️ Deletar Usuário (DELETE)
 • curl -X DELETE http://localhost:8080/users/1
